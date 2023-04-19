@@ -16,9 +16,12 @@ class Solution{
         // Your code goes here
         int result = 0;
         for(int i=0; i<n-1; i++) {
-            result = result ^ array[i] ^ (i+1);
+            result = result ^ array[i];
         }
-        result = result ^ n;
+        for(int i=1; i<=n; i++) {
+            result = result ^ i;
+        }
+        
         return result;
     }
 };
