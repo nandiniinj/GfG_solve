@@ -3,6 +3,7 @@
 class Solution:
     def findMissing(self, arr, n):
         # code here
+        #time complexity of the below code is O(n)
         a=arr[0]
         l=arr[-1]
         d=(l-a)//n
@@ -10,8 +11,27 @@ class Solution:
         for i in range(n-1):
             if arr[i]+d!=arr[i+1]:
                 return arr[i]+d
+        
+        #we have to solve with time complexity of O(logn)
     
-
+        # d=(arr[-1]-arr[0])//n
+        # low=0
+        # high=n-1
+        
+        # #binary search
+        # while(low<high):
+            
+        #     mid=(low+(high-low))//2
+            
+        #     if low+1==high:
+        #         return (arr[high]+arr[low])//2
+        #         break
+            
+        #     elif (arr[mid]==(arr[0]+mid*d)):
+        #         low=mid
+            
+        #     else:
+        #         high=mid
 
 #{ 
  # Driver Code Starts
