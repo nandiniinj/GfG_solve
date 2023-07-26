@@ -133,6 +133,7 @@ void toFind(Node* root, int &node, int &found, vector<int>&nodeData){
     
     if(found==1){
         nodeData.push_back(root->data);
+        return;
     }
 }
 
