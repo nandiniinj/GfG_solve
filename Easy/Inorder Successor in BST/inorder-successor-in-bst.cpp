@@ -109,26 +109,43 @@ struct Node {
 
 class Solution{
   public:
-    // returns the inorder successor of the Node x in BST (rooted at 'root')
     
-    void inOrder(Node* root, vector<Node*>&v){
-        if(root==nullptr) return;
-        inOrder(root->left,v);
-        v.push_back(root);
-        inOrder(root->right,v);
+    //this function returns the smallest element
+    //since the bst is always sorted 
+    //therefore the smallest element will always be in the left subtree
+    Node* findSmallestElement(Node* node){
+        while(node->left){
+            node=node->left;
+        }
+        return node;
     }
     
     Node * inOrderSuccessor(Node *root, Node *x)
     {
-        //Your code here
-        vector<Node*>v;
-        inOrder(root,v);
-        for(int i=0; i<v.size()-1; i++){
-            if(v[i]==x){
-                return v[i+1];
+        //if root is null or x does not exist return null
+        if(!root || !x) return NULL;
+        
+        //if right subtree exist then return the smallest element 
+        if(x->right!=NULL){
+            return findSmallestElement(x->right);
+        }
+        
+        //if right subtree does not exist
+        Node* result= NULL;
+        
+        while(root){
+            if(x->data < root->data){
+                result=root;
+                root=root->left;
+            }
+            else if(x->data > root->data){
+                root=root->right;
+            }
+            else{
+                break;
             }
         }
-        return NULL;
+        return result;
     }
 };
 
